@@ -1,0 +1,28 @@
+﻿@model List<FutStat.Models.Leagues.League>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table>
+    <thead>
+        <tr>
+            <td>Лого</td>
+            <td>Название</td>
+            <td>Тип</td>
+            <td>Страна</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var league in Model)
+        {
+            <tr>
+                <td><img src="@league.Logo" height="50" /></td>
+                <td>@league.Name</td>
+                <td>@league.Type</td>
+                <td><img src="@(league.Country.Flag != "" ? league.Country.Flag : "https://upload.wikimedia.org/wikipedia/commons/d/d4/World_Flag_%282004%29.svg")" title="@league.Country.Name" width="70" height="50" /></td>
+            </tr>
+        }
+    </tbody>
+</table>
