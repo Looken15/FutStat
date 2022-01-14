@@ -38,6 +38,10 @@ namespace FutStat.IoC
             container.RegisterType<ITeamsService, TeamsService>();
             #endregion
 
+            #region seasons
+            container.RegisterType<ISeasonsRepository, SeasonsRepository>();
+            #endregion
+
             return container;
         }
     }

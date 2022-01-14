@@ -169,6 +169,7 @@
     <Compile Include="Abstract\ILeaguesRepository.cs" />
     <Compile Include="Abstract\ILeaguesService.cs" />
     <Compile Include="Abstract\IApiService.cs" />
+    <Compile Include="Abstract\ISeasonsRepository.cs" />
     <Compile Include="Abstract\ITeamsRepository.cs" />
     <Compile Include="Abstract\ITeamsService.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -194,6 +195,7 @@
     <Compile Include="Repository\BaseRepository.cs" />
     <Compile Include="Repository\FutContext.cs" />
     <Compile Include="Repository\LeaguesRepository.cs" />
+    <Compile Include="Repository\SeasonsRepository.cs" />
     <Compile Include="Repository\TeamsRepository.cs" />
     <Compile Include="Services\ApiService.cs" />
     <Compile Include="Services\LeaguesService.cs" />

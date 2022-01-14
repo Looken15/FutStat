@@ -14,17 +14,19 @@ namespace FutStat.Services
         private readonly IApiService apiService;
         private readonly ITeamsRepository teamsRepository;
         private readonly ILeaguesRepository leaguesRepository;
-        public TeamsService(IApiService _apiService, ITeamsRepository _teamsRepository, ILeaguesRepository _leaguesRepository)
+        private readonly ISeasonsRepository seasonsRepository;
+        public TeamsService(IApiService _apiService, ITeamsRepository _teamsRepository, ILeaguesRepository _leaguesRepository, ISeasonsRepository _seasonsRepository)
         {
             apiService = _apiService;
             teamsRepository = _teamsRepository;
             leaguesRepository = _leaguesRepository;
+            seasonsRepository = _seasonsRepository;
         }
         public List<Team> GetTeams(int leagueId)
         {
             AddLeagueTeams(leagueId);
             var trueLeagueId = leaguesRepository.GetLeague(leagueId).Id;
-            return teamsRepository.GetTeams().Where(x => x.LeagueId == trueLeagueId).ToList();
+            return teamsRepository.GetTeams().Where(x => x.LeagueId == trueLeagueId).OrderBy(x => x.Name).ToList();
         }
 
         public void AddLeagueTeams(int leagueId)
@@ -32,7 +34,8 @@ namespace FutStat.Services
             var trueLeagueId = leaguesRepository.GetLeague(leagueId).Id;
             if (teamsRepository.GetTeams().Where(x => x.LeagueId == trueLeagueId).Count() == 0)
             {
-                var teams = GetTeamsFromApi(leagueId, DateTime.Now.Year - 1);
+                var season = seasonsRepository.GetSeasons(trueLeagueId).Max(x => x.Year);
+                var teams = GetTeamsFromApi(leagueId, season);
                 foreach (var team in teams.response.Select(x => x.team))
                 {
                     var newTeam = new Team
