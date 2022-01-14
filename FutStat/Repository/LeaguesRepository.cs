@@ -10,16 +10,16 @@ using System.Data.Entity;
 
 namespace FutStat.Repository
 {
-    public class LeaguesRepository : ILeaguesRepository
+    public class LeaguesRepository : BaseRepository, ILeaguesRepository
     {
-        private readonly FutContext db;
-        public LeaguesRepository()
-        {
-            db = new FutContext();
-        }
         public IQueryable<League> GetLeagues()
         {
             return db.Leagues.Include(x => x.Country);
+        }
+
+        public League GetLeague(int id)
+        {
+            return db.Leagues.FirstOrDefault(x => x.LeagueId == id);
         }
     }
 }

@@ -1,33 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using FutStat.Abstract;
 using FutStat.Core;
 
 namespace FutStat.Services
 {
-    public class ApiService
+    public class ApiService : IApiService
     {
-        public async Task<string> GetFromAPIAsync(string endpoint)
+        public string GetFromAPIAsync(string endpoint)
         {
-            var client = new HttpClient();
-            var request = new HttpRequestMessage
+            using (var client = new WebClient())
             {
-                Method = HttpMethod.Get,
-                RequestUri = new Uri(Config.apiPath + endpoint),
-                Headers =
-                {
-                    { Config.apiHostName, Config.apiHost },
-                    { Config.apiKeyName, Config.apiKey },
-                },
-            };
-            using (var response = await client.SendAsync(request))
-            {
-                response.EnsureSuccessStatusCode();
-                var body = await response.Content.ReadAsStringAsync();
-                return body;
+                client.Headers.Add(Config.apiHostName, Config.apiHost);
+                client.Headers.Add(Config.apiKeyName, Config.apiKey);
+                client.BaseAddress = Config.apiPath;
+
+                return client.DownloadString(endpoint);
             }
         }
     }

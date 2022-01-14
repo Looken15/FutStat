@@ -24,8 +24,19 @@ namespace FutStat.IoC
         {
             var container = new UnityContainer();
 
+            #region api
+            container.RegisterType<IApiService, ApiService>();
+            #endregion
+
+            #region leagues
             container.RegisterType<ILeaguesService, LeaguesService>();
             container.RegisterType<ILeaguesRepository, LeaguesRepository>();
+            #endregion
+
+            #region teams
+            container.RegisterType<ITeamsRepository, TeamsRepository>();
+            container.RegisterType<ITeamsService, TeamsService>();
+            #endregion
 
             return container;
         }

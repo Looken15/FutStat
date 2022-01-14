@@ -16,7 +16,8 @@
     <tbody>
         @foreach (var league in Model)
         {
-            <tr>
+            <tr onclick="callTeams(@league.LeagueId)">
+                <td hidden id="LeagueId">@league.LeagueId</td>
                 <td><img src="@league.Logo" height="50" /></td>
                 <td>@league.Name</td>
                 <td>@league.Type</td>
@@ -25,3 +26,9 @@
         }
     </tbody>
 </table>
+
+<script>
+    function callTeams(leagueId) {
+        window.location.href = '/Teams?leagueId=' + leagueId;
+    }
+</script>

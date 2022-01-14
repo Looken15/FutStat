@@ -17,7 +17,7 @@ namespace FutStat.Core
         #endregion api
 
         #region leagues
-        public static int[] topLeaguesIds = new int[] { 39, 140, 78, 135, 61, 94, 88, 71, 235, 180 };
+        public static int[] topLeaguesIds = new int[] { 39, 140, 78, 135, 61, 94, 88, 71, 235, 40 };
         #endregion leagues
     }
 }

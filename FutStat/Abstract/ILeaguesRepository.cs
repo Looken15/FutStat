@@ -10,5 +10,6 @@ namespace FutStat.Abstract
     public interface ILeaguesRepository
     {
         IQueryable<League> GetLeagues();
+        League GetLeague(int id);
     }
 }
