@@ -12,7 +12,7 @@ namespace FutStat.Services
 {
     public class ApiService : IApiService
     {
-        public string GetFromAPIAsync(string endpoint)
+        public string GetFromAPI(string endpoint)
         {
             using (var client = new WebClient())
             {

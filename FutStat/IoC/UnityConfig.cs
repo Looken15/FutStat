@@ -37,6 +37,15 @@ namespace FutStat.IoC
             container.RegisterType<ICompetitionService, CompetitionService>();
             #endregion
 
+            #region teams
+            container.RegisterType<ITeamService, TeamService>();
+            container.RegisterType<ITeamRepository, TeamRepository>();
+            #endregion
+
+            #region teamcompetition
+            container.RegisterType<ITeamCompetitionRepository, TeamCompetitionRepository>();
+            #endregion teamcompetition
+
             return container;
         }
     }

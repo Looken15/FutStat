@@ -15,7 +15,7 @@
     <tbody>
         @foreach (var competition in Model)
         {
-            <tr @*onclick="callTeams(@competition.CompetitionId)"*@ title="@competition.Id">
+            <tr onclick="callTeams(@competition.Id)" title="@competition.Id">
                 <td hidden id="LeagueId">@competition.CompetitionId</td>
                 <td><img src="@competition.LogoUrl" height="50" /></td>
                 <td>@competition.Name</td>
@@ -27,6 +27,6 @@
 
 <script>
     function callTeams(leagueId) {
-        window.location.href = '/Teams?leagueId=' + leagueId;
+        window.location.href = '/Competition?Id=' + leagueId;
     }
 </script>

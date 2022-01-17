@@ -27,26 +27,5 @@ namespace FutStat.Controllers
             var result = competitionService.GetTopCompetitions();
             return View(result);
         }
-
-        public ActionResult Create()
-        {
-            var json = apiService.GetFromAPIAsync("competitions");
-            var response = JsonSerializer.Deserialize<CompetitionApi.Rootobject>(json);
-            foreach (var competition in response.competitions)
-            {
-                var newCompetition = new Competition
-                {
-                    CompetitionId = competition.id,
-                    AreaId = areaRepository.GetArea(competition.area.id).Id,
-                    Name = competition.name,
-                    Code = competition.code,
-                    LogoUrl = competition.emblemUrl,
-                    Plan = competition.plan,
-                    CurrentSeason = competition.currentSeason != null ? string.Concat(competition.currentSeason.startDate.Take(4)) : ""
-                };
-                competitionRepository.Add(newCompetition);
-            }
-            return View("Index");
-        }
     }
 }

@@ -11,5 +11,7 @@ namespace FutStat.Repository
     {
         public DbSet<Area> Areas { get; set; }
         public DbSet<Competition> Competitions { get; set; }
+        public DbSet<Team> Teams { get; set; }
+        public DbSet<TeamCompetition> TeamCompetitions { get; set; }
     }
 }

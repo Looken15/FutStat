@@ -8,6 +8,6 @@ namespace FutStat.Abstract
 {
     public interface IApiService
     {
-        string GetFromAPIAsync(string endpoint);
+        string GetFromAPI(string endpoint);
     }
 }

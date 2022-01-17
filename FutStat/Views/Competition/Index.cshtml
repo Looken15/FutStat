@@ -1,0 +1,22 @@
+﻿@model List<FutStat.Models.TeamCompetition>
+@{
+
+}
+
+<table>
+    <thead>
+        <tr>
+            <td>Лого</td>
+            <td>Название</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var team in Model)
+        {
+            <tr>
+                <td><img src="@team.Team.LogoUrl" height="50" /></td>
+                <td>@team.Team.FullName (@team.Team.ShortName)</td>
+            </tr>
+        }
+    </tbody>
+</table>

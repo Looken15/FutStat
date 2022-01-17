@@ -170,11 +170,15 @@
     <Compile Include="Abstract\IAreaRepository.cs" />
     <Compile Include="Abstract\ICompetitionRepository.cs" />
     <Compile Include="Abstract\ICompetitionService.cs" />
+    <Compile Include="Abstract\ITeamCompetitionRepository.cs" />
+    <Compile Include="Abstract\ITeamRepository.cs" />
+    <Compile Include="Abstract\ITeamService.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Controllers\CompetitionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Core\Config.cs" />
     <Compile Include="Core\Enum\LeagueEnum.cs" />
@@ -186,13 +190,19 @@
     <Compile Include="Models\AreaApi.cs" />
     <Compile Include="Models\Competition.cs" />
     <Compile Include="Models\CompetitionApi.cs" />
+    <Compile Include="Models\CompetitionTeamApi.cs" />
+    <Compile Include="Models\Team.cs" />
+    <Compile Include="Models\TeamCompetition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AreaRepository.cs" />
     <Compile Include="Repository\BaseRepository.cs" />
     <Compile Include="Repository\CompetitionRepository.cs" />
     <Compile Include="Repository\FutContext.cs" />
+    <Compile Include="Repository\TeamCompetitionRepository.cs" />
+    <Compile Include="Repository\TeamRepository.cs" />
     <Compile Include="Services\ApiService.cs" />
     <Compile Include="Services\CompetitionService.cs" />
+    <Compile Include="Services\TeamService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\FutStat.mdf" />
@@ -232,8 +242,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Leagues\Index.cshtml" />
-    <Content Include="Views\Teams\Index.cshtml" />
+    <Content Include="Views\Competition\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
