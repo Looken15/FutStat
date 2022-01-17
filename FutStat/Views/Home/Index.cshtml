@@ -1,3 +1,32 @@
-﻿@{
-    ViewBag.Title = "Home";
+﻿@model List<FutStat.Models.Competition>
+
+@{
+    ViewBag.Title = "Главная";
 }
+
+<table>
+    <thead>
+        <tr>
+            <td>Лого</td>
+            <td>Название</td>
+            <td>Страна</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var competition in Model)
+        {
+            <tr @*onclick="callTeams(@competition.CompetitionId)"*@ title="@competition.Id">
+                <td hidden id="LeagueId">@competition.CompetitionId</td>
+                <td><img src="@competition.LogoUrl" height="50" /></td>
+                <td>@competition.Name</td>
+                <td><img src="@(competition.Area.FlagUrl != "" ? competition.Area.FlagUrl : "https://upload.wikimedia.org/wikipedia/commons/d/d4/World_Flag_%282004%29.svg")" title="@competition.Area.Name" width="70" height="50" /></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    function callTeams(leagueId) {
+        window.location.href = '/Teams?leagueId=' + leagueId;
+    }
+</script>

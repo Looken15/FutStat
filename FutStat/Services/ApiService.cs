@@ -16,8 +16,7 @@ namespace FutStat.Services
         {
             using (var client = new WebClient())
             {
-                client.Headers.Add(Config.apiHostName, Config.apiHost);
-                client.Headers.Add(Config.apiKeyName, Config.apiKey);
+                client.Headers.Add(Config.apiName, Config.apiKey);
                 client.BaseAddress = Config.apiPath;
 
                 return client.DownloadString(endpoint);

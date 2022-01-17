@@ -28,18 +28,13 @@ namespace FutStat.IoC
             container.RegisterType<IApiService, ApiService>();
             #endregion
 
-            #region leagues
-            container.RegisterType<ILeaguesService, LeaguesService>();
-            container.RegisterType<ILeaguesRepository, LeaguesRepository>();
+            #region areas
+            container.RegisterType<IAreaRepository, AreaRepository>();
             #endregion
 
-            #region teams
-            container.RegisterType<ITeamsRepository, TeamsRepository>();
-            container.RegisterType<ITeamsService, TeamsService>();
-            #endregion
-
-            #region seasons
-            container.RegisterType<ISeasonsRepository, SeasonsRepository>();
+            #region competitions
+            container.RegisterType<ICompetitionRepository, CompetitionRepository>();
+            container.RegisterType<ICompetitionService, CompetitionService>();
             #endregion
 
             return container;

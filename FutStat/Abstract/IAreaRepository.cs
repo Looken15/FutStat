@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FutStat.Models.Seasons;
+using FutStat.Models;
 
 namespace FutStat.Abstract
 {
-    public interface ISeasonsRepository
+    public interface IAreaRepository
     {
-        IQueryable<Season> GetSeasons(int leagueId);
+        IQueryable<Area> GetAreas();
+        Area GetArea(int areaId);
+        void Add(Area area);
     }
 }

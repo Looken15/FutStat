@@ -9,15 +9,13 @@ namespace FutStat.Core
     public static class Config
     {
         #region api
-        public const string apiPath = "https://api-football-v1.p.rapidapi.com/v3/";
-        public const string apiHost = "api-football-v1.p.rapidapi.com";
-        public const string apiHostName = "x-rapidapi-host";
-        public const string apiKey = "e9d60c869amshb73fa0fde2817ccp19f9a0jsnc2b582f09582";
-        public const string apiKeyName = "x-rapidapi-key";
+        public const string apiPath = "https://api.football-data.org/v2/";
+        public const string apiKey = "a0525938c5404827ae0546c3d683ddcd";
+        public const string apiName = "X-Auth-Token";
         #endregion api
 
         #region leagues
-        public static int[] topLeaguesIds = new int[] { 39, 140, 78, 135, 61, 94, 88, 71, 235, 40 };
+        public static string[] topLeaguesCodes = new string[] { "CL", "PL", "PD", "BL1", "SA", "FL1", "PPL", "DED", "BSA", "ELC", "EC", "CLI" };
         #endregion leagues
     }
 }
