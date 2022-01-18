@@ -9,7 +9,8 @@ namespace FutStat.Abstract
 {
     public interface ITeamService
     {
-        List<TeamCompetition> GetTeams(int competitionId);
+        List<Team> GetTeams(int competitionId);
+        LeagueStanding GetStanding(int competitionId);
         void ParseCompetition();
     }
 }

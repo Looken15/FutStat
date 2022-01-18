@@ -1,0 +1,39 @@
+﻿@model FutStat.Models.LeagueStanding
+@{
+}
+
+<table>
+    <thead>
+        <tr>
+            <td></td>
+            <td>Лого</td>
+            <td>Название</td>
+            <td>С</td>
+            <td>В</td>
+            <td>Н</td>
+            <td>П</td>
+            <td>ЗМ</td>
+            <td>ПМ</td>
+            <td>РГ</td>
+            <td>Очки</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pos in Model.Positions)
+        {
+            <tr>
+                <td>@pos.Position</td>
+                <td><img src="@pos.Team.LogoUrl" height="20" /></td>
+                <td>@pos.Team.Name</td>
+                <td>@pos.PlayedGames</td>
+                <td>@pos.Won</td>
+                <td>@pos.Draw</td>
+                <td>@pos.Lost</td>
+                <td>@pos.GoalsFor</td>
+                <td>@pos.GoalsAgainst</td>
+                <td>@pos.GoalDifference</td>
+                <td>@pos.Points</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -20,5 +20,11 @@ namespace FutStat.Controllers
             var result = teamService.GetTeams(Id);
             return View(result);
         }
+
+        public ActionResult Table(int Id)
+        {
+            var result = teamService.GetStanding(Id);
+            return View(result);
+        }
     }
 }

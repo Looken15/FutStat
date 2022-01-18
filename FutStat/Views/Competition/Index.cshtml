@@ -1,4 +1,4 @@
-﻿@model List<FutStat.Models.TeamCompetition>
+﻿@model List<FutStat.Models.Team>
 @{
 
 }
@@ -14,8 +14,8 @@
         @foreach (var team in Model)
         {
             <tr>
-                <td><img src="@team.Team.LogoUrl" height="50" /></td>
-                <td>@team.Team.FullName (@team.Team.ShortName)</td>
+                <td><img src="@team.LogoUrl" height="50" /></td>
+                <td>@team.FullName (@team.ShortName)</td>
             </tr>
         }
     </tbody>

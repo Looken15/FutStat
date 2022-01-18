@@ -16,6 +16,7 @@ namespace FutStat.Core
 
         #region leagues
         public static string[] topLeaguesCodes = new string[] { "CL", "PL", "PD", "BL1", "SA", "FL1", "PPL", "DED", "BSA", "ELC", "EC", "CLI" };
+        public static string[] cups = new string[] { "CL", "EC", "CLI" };
         #endregion leagues
     }
 }

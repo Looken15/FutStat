@@ -25,9 +25,42 @@ namespace FutStat.Services
             competitionRepository = _competitionRepository;
         }
 
-        public List<TeamCompetition> GetTeams(int competitionId)
+        public List<Team> GetTeams(int competitionId)
         {
-            return teamCompetitionRepository.GetTeamCompetitions().Where(x => x.CompetitionId == competitionId).ToList();
+            return teamCompetitionRepository.GetTeamCompetitions().Where(x => x.CompetitionId == competitionId).Select(x => x.Team).ToList();
+        }
+
+        public LeagueStanding GetStanding(int competitionId)
+        {
+            var json = apiService.GetFromAPI($"competitions/{competitionId}/standings");
+            var options = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
+            var standing = JsonConvert.DeserializeObject<LeagueStandingApi.Data>(json, options);
+
+            var result = new LeagueStanding
+            {
+                Competition = competitionRepository.GetCompetition(competitionId),
+                LastUpdated = standing.competition.lastUpdated,
+            };
+            var table = standing.standings.First(x => x.table.Count() != 0).table;
+            foreach (var pos in table)
+            {
+                var resPos = new TablePosition
+                {
+                    Position = pos.position,
+                    Team = teamRepository.GetTeam(pos.team.id),
+                    PlayedGames = pos.playedGames,
+                    Won = pos.won,
+                    Draw = pos.draw,
+                    Lost = pos.lost,
+                    Points = pos.points,
+                    GoalsFor = pos.goalsFor,
+                    GoalsAgainst = pos.goalsAgainst,
+                    GoalDifference = pos.goalDifference,
+                };
+                result.Positions.Add(resPos);
+            }
+            result.Positions = result.Positions.OrderBy(x => x.Position).ToList();
+            return result;
         }
 
         public void ParseCompetition()

@@ -191,6 +191,9 @@
     <Compile Include="Models\Competition.cs" />
     <Compile Include="Models\CompetitionApi.cs" />
     <Compile Include="Models\CompetitionTeamApi.cs" />
+    <Compile Include="Models\LeagueStanding.cs" />
+    <Compile Include="Models\LeagueStandingApi.cs" />
+    <Compile Include="Models\TablePosition.cs" />
     <Compile Include="Models\Team.cs" />
     <Compile Include="Models\TeamCompetition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -243,6 +246,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Competition\Index.cshtml" />
+    <Content Include="Views\Competition\Table.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
